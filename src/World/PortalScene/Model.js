@@ -1,12 +1,15 @@
 import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import Experience from '../../Experience.js'
+import portalVertexShader from './shaders/vertex.glsl'
+import portalFragmentShader from './shaders/fragment.glsl'
 
 export default class Model {
 
     constructor() {
 
         this.experience = new Experience()
+        this.time = this.experience.time
         this.scene = this.experience.scene
 
         // Initialize loaders
@@ -34,7 +37,10 @@ export default class Model {
         // Define materials
         this.bakedMaterial = new THREE.MeshBasicMaterial({ map: this.bakedTexture });
         this.poleLightMaterial = new THREE.MeshBasicMaterial({ color: 0xffffe5 });
-        this.portalLightMaterial = new THREE.MeshBasicMaterial({ color: '#ffffff' });
+        this.portalLightMaterial = new THREE.ShaderMaterial({
+            vertexShader: portalVertexShader,
+            fragmentShader: portalFragmentShader,
+        })
     }
 
     // Load model
@@ -81,6 +87,7 @@ export default class Model {
     }
 
     update() {
+
 
     }
 

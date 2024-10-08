@@ -7,7 +7,6 @@ export default class World {
     constructor() {
 
         this.experience = new Experience()
-        this.time = this.experience.time
         this.scene = this.experience.scene
 
         this.model = new Model()
