@@ -30,13 +30,13 @@ export default class Model {
     loadTextures() {
         // Load baked texture
         this.bakedTexture = this.textureLoader.load(this.texturePath, (texture) => {
-            texture.flipY = false;
-            texture.colorSpace = THREE.SRGBColorSpace;
+            texture.flipY = false
+            texture.colorSpace = THREE.SRGBColorSpace
         });
 
         // Define materials
-        this.bakedMaterial = new THREE.MeshBasicMaterial({ map: this.bakedTexture });
-        this.poleLightMaterial = new THREE.MeshBasicMaterial({ color: 0xffffe5 });
+        this.bakedMaterial = new THREE.MeshBasicMaterial({ map: this.bakedTexture })
+        this.poleLightMaterial = new THREE.MeshBasicMaterial({ color: 0xffffe5 })
         this.portalLightMaterial = new THREE.ShaderMaterial({
             vertexShader: portalVertexShader,
             fragmentShader: portalFragmentShader,
@@ -54,11 +54,11 @@ export default class Model {
             this.modelPath,
             (gltf) => {
                 // console.log(gltf)
-                this.processModel(gltf.scene);
+                this.processModel(gltf.scene)
             },
             undefined,
             (error) => {
-                console.error(`Error loading model: ${this.modelPath}`, error);
+                console.error(`Error loading model: ${this.modelPath}`, error)
             }
         );
     }
@@ -78,16 +78,16 @@ export default class Model {
 
         // Apply materials
         if (meshes.baked) {
-            meshes.baked.material = this.bakedMaterial;
+            meshes.baked.material = this.bakedMaterial
         }
         if (meshes.portalLight) {
-            meshes.portalLight.material = this.portalLightMaterial;
+            meshes.portalLight.material = this.portalLightMaterial
         }
         if (meshes.poleLightA) {
-            meshes.poleLightA.material = this.poleLightMaterial;
+            meshes.poleLightA.material = this.poleLightMaterial
         }
         if (meshes.poleLightB) {
-            meshes.poleLightB.material = this.poleLightMaterial;
+            meshes.poleLightB.material = this.poleLightMaterial
         }
     }
 

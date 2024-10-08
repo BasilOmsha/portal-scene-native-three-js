@@ -41,7 +41,7 @@ export default class World {
         this.plane.position.y = -1
 
         // Add the cube to the scene
-        this.scene.add(this.plane);
+        this.scene.add(this.plane)
     }
 
     update() {
