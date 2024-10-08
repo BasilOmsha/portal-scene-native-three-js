@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import Experience from "../Experience.js"
+import Model from './Model.js'
 
 export default class World {
 
@@ -9,10 +10,12 @@ export default class World {
         this.time = this.experience.time
         this.scene = this.experience.scene
 
+        this.model = new Model()
+
         // starter Mesh
         // Basic seen. To be deleted later
-         this.createCube();
-         this.createFloor();
+        //  this.createCube();
+        //  this.createFloor();
 
     }
 
@@ -43,7 +46,7 @@ export default class World {
     }
 
     update() {
-        this.cube.rotation.y += this.time.delta * 0.001;
+        // this.cube.rotation.y += this.time.delta * 0.001;
     }
 
 }
