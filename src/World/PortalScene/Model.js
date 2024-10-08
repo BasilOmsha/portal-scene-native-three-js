@@ -40,6 +40,9 @@ export default class Model {
         this.portalLightMaterial = new THREE.ShaderMaterial({
             vertexShader: portalVertexShader,
             fragmentShader: portalFragmentShader,
+            uniforms: {
+                uTime: { value: 0 },
+            },
         })
     }
 
@@ -88,6 +91,7 @@ export default class Model {
 
     update() {
 
+        this.portalLightMaterial.uniforms.uTime.value = this.time.elapsed * 0.001
 
     }
 

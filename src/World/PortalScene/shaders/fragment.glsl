@@ -84,7 +84,7 @@ float cnoise(vec3 P) {
 
 void main() {
 
-    float strength = cnoise(vec3(vUv * 5.0, 0.0));
+    float strength = cnoise(vec3(vUv * 5.0, uTime));
 
     gl_FragColor = vec4(strength, strength, strength, 1.0);
 
