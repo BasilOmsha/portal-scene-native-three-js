@@ -1,5 +1,9 @@
 import * as THREE from 'three';
 import Camera from './Camera.js';
+import Sizes from './Utils/Sizes.js'
+import Time from './Utils/Time.js'
+import Renderer from './Renderer.js'
+
 let instance = null
 
 export default class Experience {
@@ -19,29 +23,26 @@ export default class Experience {
         this.canvas = canvas
 
         /** Setup */
+        this.sizes = new Sizes()
+        this.time = new Time()
         this.scene = new THREE.Scene()
         this.camera = new Camera()
-
-        // Renderer
-        this.renderer = new THREE.WebGLRenderer({
-            canvas: this.canvas,
-            antialias: true
-        });
-        this.renderer.setSize(window.innerWidth, window.innerHeight);
-        this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-        // Time
-        this.start = Date.now()
-        this.current = this.start
-        this.elapsed = 0
-        this.delta = 16
+        this.renderer = new Renderer()
 
         // Basic seen. To be deleted later
         this.createCube();
         this.createFloor();
 
-        // Call the tick method to animate and render
-        this.tick();
+        // Resize event
+        this.sizes.on('resize', () =>{
+            // console.log('A resize occurred')
+            this.resize()
+        })
+
+         // Time tick event
+         this.time.on('tick', () => {
+            this.update()
+        })  
 
     }
 
@@ -71,28 +72,15 @@ export default class Experience {
         this.scene.add(this.plane);
     }
 
-    tick() {
+    resize() {
+        this.camera.resize()
+        this.renderer.resize()
+    }
 
-        const currentTime = Date.now()
-
-        // Calculate the time difference (delta) between this frame and the last frame
-        this.delta = currentTime - this.current
-
-        // Update the 'current' time to the current frame's time
-        // This ensures that in the next frame, we can correctly calculate the delta time again
-        this.current = currentTime
-
-        // Update the cube (rotate it for fun)
-        this.cube.rotation.y += this.delta * 0.001;
-
-        // Update the camera (in case we add controls later)
-        this.camera.update();
-
-        // Render the scene with the camera
-        this.renderer.render(this.scene, this.camera.instance);
-
-        // Use requestAnimationFrame to render continuously
-        window.requestAnimationFrame(() => this.tick());
+    update() {
+        this.cube.rotation.y += this.time.delta * 0.001;
+        this.camera.update()
+        this.renderer.update()   
     }
 
 }
