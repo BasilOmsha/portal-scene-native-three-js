@@ -42,6 +42,8 @@ export default class Model {
             fragmentShader: portalFragmentShader,
             uniforms: {
                 uTime: { value: 0 },
+                uColorStart: { value: new THREE.Color('#000000') },
+                uColorEnd: { value: new THREE.Color('#ffffff') }
             },
         })
     }
