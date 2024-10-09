@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 import Experience from "../Experience.js"
-import Model from './PortalScene/Model.js'
+import Model from './Portal/Model.js'
 
 export default class World {
 

@@ -15,6 +15,7 @@ export default class Debug {
         // Portal light material
         this.debugObject.portalColorStart = '#000000'
         this.debugObject.portalColorEnd = '#ffffff'
+        
         this.debugObject.clearColor = '#201919'
         
         if (this.active) {
