@@ -9,8 +9,11 @@ export default class Renderer {
         this.sizes = this.experience.sizes
         this.scene = this.experience.scene
         this.camera = this.experience.camera
+        this.debug = this.experience.debug
 
         this.setInstance()
+
+        this.setColor(this.debug?.debugObject?.clearColor)
 
     }
 
@@ -27,6 +30,11 @@ export default class Renderer {
 
         this.instance.setSize(this.sizes.width, this.sizes.height)
         this.instance.setPixelRatio(this.sizes.pixelRatio) // pixel ratio was calculated in the Sizes class
+
+    }
+
+    setColor(color) {
+        this.instance.setClearColor(color)
     }
 
     resize() {
