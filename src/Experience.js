@@ -4,6 +4,7 @@ import Sizes from './Utils/Sizes.js'
 import Time from './Utils/Time.js'
 import Renderer from './Renderer.js'
 import World from './World/World.js';
+import Debug from './Utils/Debug.js';
 
 let instance = null
 
@@ -30,6 +31,9 @@ export default class Experience {
         this.camera = new Camera()
         this.renderer = new Renderer()
         this.world = new World()
+        this.debug = new Debug()
+        
+        
 
         // Resize event
         this.sizes.on('resize', () =>{

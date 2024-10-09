@@ -11,6 +11,7 @@ export default class Model {
         this.experience = new Experience()
         this.time = this.experience.time
         this.scene = this.experience.scene
+        this.debug = this.experience.debug
 
         // Initialize loaders
         this.gltfLoader = new GLTFLoader()
@@ -28,6 +29,11 @@ export default class Model {
 
     // Load textures
     loadTextures() {
+
+        // Ensure `debugObject` exists and provide fallback values
+        const portalColorStart = this.debug?.debugObject.portalColorStart || '#000000'
+        const portalColorEnd  = this.debug?.debugObject.portalColorEnd || '#ffffff'
+
         // Load baked texture
         this.bakedTexture = this.textureLoader.load(this.texturePath, (texture) => {
             texture.flipY = false
@@ -42,8 +48,8 @@ export default class Model {
             fragmentShader: portalFragmentShader,
             uniforms: {
                 uTime: { value: 0 },
-                uColorStart: { value: new THREE.Color('#000000') },
-                uColorEnd: { value: new THREE.Color('#ffffff') }
+                uColorStart: { value: new THREE.Color(portalColorStart) },
+                uColorEnd: { value: new THREE.Color(portalColorEnd ) }
             },
         })
     }
