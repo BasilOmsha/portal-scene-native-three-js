@@ -79,6 +79,7 @@ export default class FireFlies {
                 uPixelRatio: { value: this.sizes.pixelRatio }, // pixle ratio retrieved from Sizes class to fix the pixles size of the particles
                 uSize: new THREE.Uniform(fireFliesSize)
             },
+            transparent: true,
         })
     }
 
