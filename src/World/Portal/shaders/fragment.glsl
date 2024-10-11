@@ -4,7 +4,7 @@ uniform vec3 uColorEnd;
 
 varying vec2 vUv;
 
-#include Perlin
+#include perlin
 
 void main() {
 
