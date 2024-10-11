@@ -14,6 +14,9 @@ export default class FireFlies {
 
         this.sizes = this.experience.sizes
 
+        // Default fireflies count
+        this.firefliesCount = this.debug?.debugObject?.fireFliesCount || 40;
+
         // Setup
         this.setGeometry()
         this.setMaterial()
@@ -25,9 +28,6 @@ export default class FireFlies {
 
         // Create a new BufferGeometry object for the fireflies
         this.firefliesGeometry = new THREE.BufferGeometry()
-
-        // Define the number of fireflies to generate
-        this.firefliesCount = 40
 
         // Create arrays to store position and scale data for each firefly
         // Position array holds x, y, z coordinates for each firefly
@@ -107,5 +107,24 @@ export default class FireFlies {
 
         this.firefliesMaterial.uniforms.uTime.value = this.time.elapsed  * 0.001
 
+    }
+
+    updateFirefliesCount(newCount) {
+        // Remove existing fireflies from the scene
+        if (this.fireflies) {
+            
+            this.fireflies.geometry.dispose()
+            // Not disposing the material because it doesn't depend on the count
+            // this.fireflies.material.dispose()
+            this.scene.remove(this.fireflies)
+            this.fireflies = null
+        }
+    
+        // Update the fireflies count
+        this.firefliesCount = newCount
+    
+        // Recreate geometry and points
+        this.setGeometry()
+        this.setPoints();
     }
 }
