@@ -82,7 +82,8 @@ export default class FireFlies {
             fragmentShader: firefliesFragmentShader,
             uniforms: {
                 uPixelRatio: { value: this.sizes.pixelRatio }, // pixle ratio retrieved from Sizes class to fix the pixles size of the particles
-                uSize: new THREE.Uniform(fireFliesSize)
+                uSize: new THREE.Uniform(fireFliesSize),
+                uTime: new THREE.Uniform(0)
             },
             transparent: true,
             blending: THREE.AdditiveBlending,
@@ -99,6 +100,12 @@ export default class FireFlies {
     resize() {
 
         this.firefliesMaterial.uniforms.uPixelRatio.value = this.sizes.pixelRatio
+
+    }
+
+    update() {
+
+        this.firefliesMaterial.uniforms.uTime.value = this.time.elapsed  * 0.001
 
     }
 }
