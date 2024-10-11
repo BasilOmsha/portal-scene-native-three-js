@@ -51,4 +51,8 @@ export default class World {
         this.portalModel.update()
     }
 
+    resize() {
+        this.fireFliesModel.resize()
+    }
+
 }

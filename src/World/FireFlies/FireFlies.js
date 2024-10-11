@@ -12,6 +12,8 @@ export default class FireFlies {
         this.scene = this.experience.scene
         this.debug = this.experience.debug
 
+        this.sizes = this.experience.sizes
+
         // Setup
         this.setGeometry()
         this.setMaterial()
@@ -66,9 +68,12 @@ export default class FireFlies {
          *  will appear smaller, and points closer will appear larger.
          */
         // this.firefliesMaterial = new THREE.PointsMaterial({ size: 0.1, sizeAttenuation: true })
-        const firefliesMaterial = new THREE.ShaderMaterial({
+        this.firefliesMaterial = new THREE.ShaderMaterial({
             vertexShader: firefliesVertexShader,
-            fragmentShader: firefliesFragmentShader
+            fragmentShader: firefliesFragmentShader,
+            uniforms: {
+                uPixelRatio: { value: this.sizes.pixelRatio } // pixle ratio retrieved from Sizes class to fix the pixles size of the particles
+            },
         })
     }
 
@@ -76,5 +81,11 @@ export default class FireFlies {
         // Points
         this.fireflies = new THREE.Points(this.firefliesGeometry, this.firefliesMaterial)
         this.scene.add(this.fireflies)
+    }
+
+    resize() {
+
+        this.firefliesMaterial.uniforms.uPixelRatio.value = this.sizes.pixelRatio
+
     }
 }
