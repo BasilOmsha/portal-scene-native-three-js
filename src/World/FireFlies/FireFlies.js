@@ -68,12 +68,16 @@ export default class FireFlies {
          *  will appear smaller, and points closer will appear larger.
          */
         // this.firefliesMaterial = new THREE.PointsMaterial({ size: 0.1, sizeAttenuation: true })
+
+        // Ensure `debugObject` exists and provide fallback values
+        const fireFliesSize = this.debug?.debugObject?.fireFliesSize || 30 
+
         this.firefliesMaterial = new THREE.ShaderMaterial({
             vertexShader: firefliesVertexShader,
             fragmentShader: firefliesFragmentShader,
             uniforms: {
                 uPixelRatio: { value: this.sizes.pixelRatio }, // pixle ratio retrieved from Sizes class to fix the pixles size of the particles
-                uSize: new THREE.Uniform(100)
+                uSize: new THREE.Uniform(fireFliesSize)
             },
         })
     }

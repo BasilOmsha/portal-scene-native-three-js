@@ -19,7 +19,7 @@ export default class Debug {
 
         this.debugObject.clearColor = '#201919'
 
-        this.debugObject.fireFliesSize = 100
+        this.debugObject.fireFliesSize = 30
         
         if (this.active) {
             this.ui = new GUI()
@@ -46,8 +46,8 @@ export default class Debug {
             }).name('Portal outer glow')
 
             folder.add(this.debugObject, 'fireFliesSize').min(0).max(500).step(1).onChange(() => {
-                this.fireFliesModel.firefliesMaterial.uniforms.uSize.value = this.debugObject.fireFliesSize;
-            }).name('Fire flies size')
+                this.fireFliesModel.firefliesMaterial.uniforms.uSize.value = this.debugObject.fireFliesSize
+            }).name('Fireflies size')
 
     }
 }
