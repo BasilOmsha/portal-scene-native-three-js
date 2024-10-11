@@ -5,7 +5,7 @@ export default class Debug {
     constructor() {
 
         this.experience = new Experience()
-        this.model = this.experience.world.model
+        this.model = this.experience.world.portalModel
         this.renderer = this.experience.renderer
         
         // this.active = window.location.hash === '#debug'
@@ -15,7 +15,7 @@ export default class Debug {
         // Portal light material
         this.debugObject.portalColorStart = '#000000'
         this.debugObject.portalColorEnd = '#ffffff'
-        
+
         this.debugObject.clearColor = '#201919'
         
         if (this.active) {

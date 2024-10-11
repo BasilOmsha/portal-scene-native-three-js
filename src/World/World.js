@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import Experience from "../Experience.js"
 import Model from './Portal/Model.js'
+import FireFlies from './FireFlies/FireFlies.js'
 
 export default class World {
 
@@ -9,7 +10,9 @@ export default class World {
         this.experience = new Experience()
         this.scene = this.experience.scene
 
-        this.model = new Model()
+        this.portalModel = new Model()
+
+        this.fireFliesModel = new FireFlies()
 
         // starter Mesh
         // Basic seen. To be deleted later
@@ -45,7 +48,7 @@ export default class World {
     }
 
     update() {
-        this.model.update()
+        this.portalModel.update()
     }
 
 }
