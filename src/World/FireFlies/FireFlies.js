@@ -70,7 +70,7 @@ export default class FireFlies {
         // this.firefliesMaterial = new THREE.PointsMaterial({ size: 0.1, sizeAttenuation: true })
 
         // Ensure `debugObject` exists and provide fallback values
-        const fireFliesSize = this.debug?.debugObject?.fireFliesSize || 30 
+        const fireFliesSize = this.debug?.debugObject?.fireFliesSize || 100 
 
         this.firefliesMaterial = new THREE.ShaderMaterial({
             vertexShader: firefliesVertexShader,

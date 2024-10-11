@@ -19,7 +19,7 @@ export default class Debug {
 
         this.debugObject.clearColor = '#201919'
 
-        this.debugObject.fireFliesSize = 30
+        this.debugObject.fireFliesSize = 100
         
         if (this.active) {
             this.ui = new GUI()
