@@ -72,7 +72,8 @@ export default class FireFlies {
             vertexShader: firefliesVertexShader,
             fragmentShader: firefliesFragmentShader,
             uniforms: {
-                uPixelRatio: { value: this.sizes.pixelRatio } // pixle ratio retrieved from Sizes class to fix the pixles size of the particles
+                uPixelRatio: { value: this.sizes.pixelRatio }, // pixle ratio retrieved from Sizes class to fix the pixles size of the particles
+                uSize: new THREE.Uniform(100)
             },
         })
     }
