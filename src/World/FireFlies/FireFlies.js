@@ -1,5 +1,7 @@
 import * as THREE from 'three'
 import Experience from '../../Experience.js'
+import firefliesVertexShader from './shaders/vertex.glsl'
+import firefliesFragmentShader from './shaders/fragment.glsl'
 
 export default class FireFlies { 
 
@@ -59,8 +61,15 @@ export default class FireFlies {
     }
 
     setMaterial() {
-        // Material
-        this.firefliesMaterial = new THREE.PointsMaterial({ size: 0.1, sizeAttenuation: true })
+        /* 
+         * Material. Attenuation will make sure points farther from the camera 
+         *  will appear smaller, and points closer will appear larger.
+         */
+        // this.firefliesMaterial = new THREE.PointsMaterial({ size: 0.1, sizeAttenuation: true })
+        const firefliesMaterial = new THREE.ShaderMaterial({
+            vertexShader: firefliesVertexShader,
+            fragmentShader: firefliesFragmentShader
+        })
     }
 
     setPoints() {
