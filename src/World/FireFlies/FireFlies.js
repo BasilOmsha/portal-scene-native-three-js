@@ -12,9 +12,8 @@ export default class FireFlies {
 
         // Setup
         this.setGeometry()
-        // this.setTextures()
-        // this.setMaterial()
-        // this.setPoints()
+        this.setMaterial()
+        this.setPoints()
 
     }
 
@@ -57,5 +56,16 @@ export default class FireFlies {
             new THREE.BufferAttribute(this.positionArray, 3)
         );
         
+    }
+
+    setMaterial() {
+        // Material
+        this.firefliesMaterial = new THREE.PointsMaterial({ size: 0.1, sizeAttenuation: true })
+    }
+
+    setPoints() {
+        // Points
+        this.fireflies = new THREE.Points(this.firefliesGeometry, this.firefliesMaterial)
+        this.scene.add(this.fireflies)
     }
 }
