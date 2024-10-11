@@ -85,6 +85,7 @@ export default class FireFlies {
                 uSize: new THREE.Uniform(fireFliesSize)
             },
             transparent: true,
+            blending: THREE.AdditiveBlending,
         })
     }
 
