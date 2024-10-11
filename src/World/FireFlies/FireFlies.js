@@ -86,6 +86,7 @@ export default class FireFlies {
             },
             transparent: true,
             blending: THREE.AdditiveBlending,
+            depthWrite: false,
         })
     }
 
