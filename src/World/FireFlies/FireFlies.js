@@ -37,7 +37,7 @@ export default class FireFlies {
             let i3 = i * 3;
 
             // Assign a random x position between -2 and 2
-            this.positionArray[i3 + 0] = (Math.random() - 0.5) * 4;
+            this.positionArray[i3    ] = (Math.random() - 0.5) * 4;
 
             // Assign a random y position between 0 and 1.5
             this.positionArray[i3 + 1] = Math.random() * 1.5;
